@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assal Pastry — Authentic Persian Sweets · Irvine, CA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6ed;
+    --warm-white: #fefaf4;
+    --gold: #c89b5f;
+    --gold-light: #e8c98a;
+    --gold-dark: #a07840;
+    --brown: #3d2b1f;
+    --brown-light: #6b4c38;
+    --rose: #d4897a;
+    --sage: #8a9e88;
+    --text: #2a1f18;
+    --text-muted: #7a6555;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(253, 246, 237, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200, 155, 95, 0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--brown); letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--brown-light); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 4rem; padding-top: 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(200,155,95,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 80%, rgba(212,137,122,0.07) 0%, transparent 50%);
+  }
+  .hero-arch {
+    position: absolute; right: -2rem; top: 50%;
+    transform: translateY(-50%);
+    width: 55%; height: 90vh;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    z-index: 0; overflow: hidden;
+    box-shadow: 0 8px 48px rgba(60,43,31,0.18);
+  }
+  .hero-arch img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    display: block;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 700; line-height: 1.1;
+    color: var(--brown); margin-bottom: 0.3rem;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gold);
+    display: block;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 300; font-style: italic;
+    color: var(--brown-light); margin: 1.2rem 0 2.2rem;
+    line-height: 1.6; max-width: 420px;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block; padding: 0.85rem 2.2rem;
+    background: var(--gold); color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-block; padding: 0.85rem 2.2rem;
+    border: 1.5px solid var(--gold); color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .btn-outline:hover { background: var(--gold); color: #fff; }
+
+  .hero-badges {
+    display: flex; gap: 1.5rem; margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.08em;
+    color: var(--text-muted);
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .hero-badge::before {
+    content: '—'; color: var(--gold-light);
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-strip {
+    background: var(--brown);
+    padding: 0.85rem 0;
+    overflow: hidden; white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-flex; gap: 3rem;
+    animation: marquee 25s linear infinite;
+  }
+  .marquee-inner span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; font-style: italic;
+    color: var(--gold-light); letter-spacing: 0.05em;
+  }
+  .marquee-sep { color: var(--gold) !important; font-style: normal !important; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── STORY ── */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3.5vw, 3rem);
+    font-weight: 700; color: var(--brown);
+    line-height: 1.2; margin-bottom: 1.5rem;
+  }
+
+  .story-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .story-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 400;
+    line-height: 1.85; color: var(--text-muted);
+    margin-bottom: 1.2rem;
+  }
+  .story-text p strong {
+    color: var(--brown); font-weight: 500;
+  }
+  .story-visual {
+    position: relative;
+    height: 420px;
+  }
+  .story-card {
+    position: absolute;
+    background: var(--warm-white);
+    border: 1px solid rgba(200,155,95,0.2);
+    padding: 2rem;
+    border-radius: 3px;
+  }
+  .story-card:nth-child(1) { top: 0; left: 0; right: 4rem; height: 260px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    box-shadow: 4px 4px 20px rgba(60,43,31,0.07);
+  }
+  .story-card:nth-child(2) {
+    bottom: 0; right: 0; left: 3rem;
+    text-align: center;
+    box-shadow: 4px 4px 20px rgba(60,43,31,0.07);
+  }
+  .story-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 700;
+    color: var(--gold); display: block;
+  }
+  .story-stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--brown-light);
+  }
+
+  /* ── MENU ── */
+  #menu { background: var(--warm-white); }
+  .menu-intro {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 3.5rem;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .menu-card {
+    background: var(--cream);
+    border: 1px solid rgba(200,155,95,0.15);
+    border-radius: 4px; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(60,43,31,0.1);
+  }
+  .menu-card-img {
+    height: 180px; width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    background: linear-gradient(135deg, #f5e6cc, #e8d4b0);
+  }
+  .menu-card-body { padding: 1.4rem; }
+  .menu-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 600;
+    color: var(--brown); margin-bottom: 0.5rem;
+  }
+  .menu-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--text-muted);
+    line-height: 1.6; margin-bottom: 0.8rem;
+  }
+  .menu-badge {
+    display: inline-block;
+    background: rgba(200,155,95,0.12);
+    color: var(--gold-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem; border-radius: 2px;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews-intro {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 3rem;
+    padding: 0 4rem;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .star-row { margin-top: 0.6rem; }
+  .star {
+    color: var(--gold); font-size: 1.2rem;
+    margin-right: 0.1rem;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem; padding: 0 4rem 4rem;
+  }
+  .review-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(200,155,95,0.15);
+    border-radius: 4px; padding: 1.8rem;
+    transition: box-shadow 0.3s;
+  }
+  .review-card:hover { box-shadow: 0 8px 28px rgba(60,43,31,0.08); }
+  .review-stars { color: var(--gold); font-size: 0.95rem; margin-bottom: 0.9rem; }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; line-height: 1.75;
+    color: var(--text-muted); margin-bottom: 1rem;
+    font-style: italic;
+  }
+  .review-author {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.08em;
+    color: var(--brown-light);
+  }
+
+  /* ── INFO ── */
+  #info {
+    background: var(--brown);
+    color: var(--cream);
+    text-align: center;
+  }
+  #info .section-label { color: var(--gold-light); }
+  #info .section-title { color: var(--cream); margin-bottom: 3rem; }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; max-width: 1100px; margin: 0 auto;
+  }
+  .info-block {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,155,95,0.2);
+    border-radius: 4px; padding: 2rem 1.5rem;
+    text-align: left;
+  }
+  .info-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+  .info-block p, .info-block li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; color: rgba(253,246,237,0.75);
+    line-height: 1.8; list-style: none;
+  }
+  .info-block a {
+    color: var(--gold-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,155,95,0.4);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .info-block a:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.6);
+  }
+
+  /* Maps button */
+  .maps-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-top: 0.8rem;
+    padding: 0.55rem 1.1rem;
+    background: rgba(200,155,95,0.15);
+    border: 1px solid rgba(200,155,95,0.4);
+    border-radius: 3px;
+    color: var(--gold-light) !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    transition: background 0.2s, border-color 0.2s !important;
+  }
+  .maps-btn:hover {
+    background: rgba(200,155,95,0.28) !important;
+    border-color: rgba(200,155,95,0.7) !important;
+    color: #fff !important;
+  }
+  .maps-btn svg {
+    width: 13px; height: 13px; flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #2a1f18;
+    padding: 2rem 4rem;
+    text-align: center;
+    border-top: 1px solid rgba(200,155,95,0.15);
+  }
+  footer p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.06em;
+    color: rgba(253,246,237,0.45);
+  }
+  footer strong { color: rgba(200,155,95,0.7); }
+  footer a {
+    color: rgba(200,155,95,0.6);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,155,95,0.2);
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--gold-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.4rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+    .hero-arch { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .story-visual { height: 260px; }
+    .reviews-intro, .reviews-grid { padding: 0 1.5rem 2rem; }
+    footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Assal <span>Pastry</span></div>
+  <ul class="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#info">Visit Us</a></li>
+    <li><a href="https://www.instagram.com/assal_pastry" target="_blank" rel="noopener" style="color:var(--gold);">Instagram ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Since 1989 · Irvine, California</div>
+    <h1 class="hero-title">
+      Authentic Persian
+      <em>Sweets &amp; Pastries</em>
+    </h1>
+    <p class="hero-subtitle">
+      Handcrafted with centuries-old recipes, every bite carries the warmth
+      of Persian tradition — made fresh daily in Irvine.
+    </p>
+    <div class="hero-cta">
+      <a href="#menu" class="btn-primary">Explore the Menu</a>
+      <a href="#info" class="btn-outline">Find Us</a>
+    </div>
+    <div class="hero-badges">
+      <span class="hero-badge">Fresh Daily</span>
+      <span class="hero-badge">Family Recipes</span>
+      <span class="hero-badge">Irvine's Favorite</span>
+    </div>
+  </div>
+  <div class="hero-arch">
+    <img
+      src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=900&q=80&fit=crop"
+      alt="Persian baklava and pastries"
+      loading="eager"
+    />
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>Baklava</span><span class="marquee-sep">✦</span>
+    <span>Zoolbia &amp; Bamieh</span><span class="marquee-sep">✦</span>
+    <span>Sohan Asali</span><span class="marquee-sep">✦</span>
+    <span>Persian Halva</span><span class="marquee-sep">✦</span>
+    <span>Nan-e Berenji</span><span class="marquee-sep">✦</span>
+    <span>Gaz</span><span class="marquee-sep">✦</span>
+    <span>Shirini Keshmeshi</span><span class="marquee-sep">✦</span>
+    <span>Koloocheh</span><span class="marquee-sep">✦</span>
+    <span>Baklava</span><span class="marquee-sep">✦</span>
+    <span>Zoolbia &amp; Bamieh</span><span class="marquee-sep">✦</span>
+    <span>Sohan Asali</span><span class="marquee-sep">✦</span>
+    <span>Persian Halva</span><span class="marquee-sep">✦</span>
+    <span>Nan-e Berenji</span><span class="marquee-sep">✦</span>
+    <span>Gaz</span><span class="marquee-sep">✦</span>
+    <span>Shirini Keshmeshi</span><span class="marquee-sep">✦</span>
+    <span>Koloocheh</span><span class="marquee-sep">✦</span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story-grid">
+    <div class="story-text">
+      <div class="section-label">Our Heritage</div>
+      <h2 class="section-title">A Taste of Persia<br>in Every Bite</h2>
+      <p>
+        <strong>Assal Pastry</strong> has been Irvine's beloved destination for authentic Persian
+        and Middle Eastern sweets since 1989. Our pastries are crafted using
+        time-honored family recipes passed down through generations — the same
+        recipes that have delighted guests in Tehran, Isfahan, and beyond.
+      </p>
+      <p>
+        Every treat is made fresh each morning using <strong>premium ingredients</strong>:
+        pure saffron, rose water, cardamom, pistachios, and wildflower honey.
+        No shortcuts. No artificial flavors. Just the real thing, made with care.
+      </p>
+      <p>
+        Whether you're discovering Persian sweets for the first time or seeking
+        a familiar taste of home, Assal Pastry welcomes you.
+      </p>
+    </div>
+    <div class="story-visual">
+      <div class="story-card">🍯</div>
+      <div class="story-card">
+        <span class="story-stat-num">35+</span>
+        <span class="story-stat-label">Years Serving Irvine</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-intro">
+    <div>
+      <div class="section-label">Our Specialties</div>
+      <h2 class="section-title">Handcrafted Daily</h2>
+    </div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--text-muted);max-width:340px;font-style:italic;line-height:1.6;">
+      A rotating selection of fresh Persian sweets, baked and prepared each morning.
+    </p>
+  </div>
+  <div class="menu-grid">
+
+    <div class="menu-card">
+      <div class="menu-card-img">🍯</div>
+      <div class="menu-card-body">
+        <div class="menu-name">Sohan Asali</div>
+        <div class="menu-desc">A crisp saffron brittle made with honey, butter, and pistachios — one of Iran's most iconic confections.</div>
+        <div class="menu-badge">Signature Item</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">🥐</div>
+      <div class="menu-card-body">
+        <div class="menu-name">Baklava</div>
+        <div class="menu-desc">Layers of flaky phyllo filled with crushed pistachios and walnuts, drenched in fragrant rose water syrup.</div>
+        <div class="menu-badge">Customer Favorite</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">🌸</div>
+      <div class="menu-card-body">
+        <div class="menu-name">Zoolbia &amp; Bamieh</div>
+        <div class="menu-desc">Golden-fried Persian fritters soaked in saffron and rose water syrup — a Ramadan classic loved year-round.</div>
+        <div class="menu-badge">Daily Fresh</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">🟡</div>
+      <div class="menu-card-body">
+        <div class="menu-name">Persian Halva</div>
+        <div class="menu-desc">Silky smooth halva infused with saffron, rose water, and cardamom — rich, aromatic, and deeply satisfying.</div>
+        <div class="menu-badge">Traditional Recipe</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">🌿</div>
+      <div class="menu-card-body">
+        <div class="menu-name">Nan-e Berenji</div>
+        <div class="menu-desc">Delicate rice flour cookies flavored with rose water, cardamom, and poppy seeds — light and melt-in-your-mouth.</div>
+        <div class="menu-badge">Gluten-Friendly</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">🍪</div>
+      <div class="menu-card-body">
+        <div class="menu-name">Persian Cookies</div>
+        <div class="menu-desc">Delicate, aromatic cookies crafted from traditional Persian recipes — light, crumbly, and not overly sweet.</div>
+        <div class="menu-badge">Daily Fresh</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="background:var(--cream); padding-bottom: 0;">
+  <div class="reviews-intro">
+    <div>
+      <div class="section-label">What Guests Say</div>
+      <h2 class="section-title">Loved by the Community</h2>
+      <div class="star-row">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">Asal Pastry is, without a doubt, the best bakery in Irvine. The Halva was sweet and soft, melting right in my mouth, and the pastries were light, flaky, and perfect. If you're looking for unique Persian sweets, this is the place to go.</p>
+      <div class="review-author">— Robby Vand, Local Guide</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">Wow. So good. We almost got one of everything simply because it looked so good — and we were so glad we did. Everything we had was amazing. Definitely recommend and will definitely be back!</p>
+      <div class="review-author">— Andrew Q., Local Guide</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">Authentic Persian pastries and decent prices. Service is excellent. Although we drive to this town to see family, I always look forward to making a stop here.</p>
+      <div class="review-author">— Bobby N., Local Guide</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">It is a sort of cultural awakening — it takes me back in time enjoying the same goodies we used to get in Bombay and Pune. Love it!</p>
+      <div class="review-author">— Amul Gadhia, Local Guide</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">Been here multiple times and always loved it. The zoolmia are great for large friends and family gatherings — very sweet and absolutely delicious.</p>
+      <div class="review-author">— Long-time Patron</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-text">Wonderful little Persian pastry shop in Irvine — not too sweet, just right yumminess. Amazing bakery, everything is beautiful and delicious! 😍</p>
+      <div class="review-author">— Maz Z., Local Guide</div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO / VISIT -->
+<section id="info">
+  <div class="section-label">Plan Your Visit</div>
+  <h2 class="section-title">Come Find Us</h2>
+  <div class="info-grid">
+
+    <div class="info-block">
+      <h3>📍 Location</h3>
+      <p>
+        14130 Culver Dr<br>
+        Irvine, CA 92604
+      </p>
+      <a
+        href="https://www.google.com/maps/place/Assal+Pastry/@33.707854,-117.7821753,16z/data=!4m14!1m7!3m6!1s0x80dcdc8aadb1af21:0x2ea7622782e0d18c!2sAssal+Pastry!8m2!3d33.7077645!4d-117.7821849!16s%2Fg%2F1tjv3tn5!3m5!1s0x80dcdc8aadb1af21:0x2ea7622782e0d18c!8m2!3d33.7077645!4d-117.7821849!16s%2Fg%2F1tjv3tn5?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D"
+        target="_blank" rel="noopener"
+        class="maps-btn"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        Open in Google Maps
+      </a>
+    </div>
+
+    <div class="info-block">
+      <h3>📞 Contact</h3>
+      <ul>
+        <li><a href="tel:9497333262">949-733-3262</a></li>
+        <li style="margin-top:0.5rem;"><a href="https://www.assalpastryus.com" target="_blank" rel="noopener">www.assalpastryus.com ↗</a></li>
+        <li style="margin-top:0.5rem;"><a href="https://www.instagram.com/assal_pastry" target="_blank" rel="noopener">@assal_pastry ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <h3>🕐 Hours</h3>
+      <ul>
+        <li>Open Daily</li>
+        <li>Closes at 7:00 PM</li>
+        <li>Quick visits welcome</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <h3>🛎 Services</h3>
+      <ul>
+        <li>In-store shopping</li>
+        <li>Takeout available</li>
+        <li>Coffee on offer</li>
+        <li>Restroom available</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <h3>♿ Accessibility</h3>
+      <ul>
+        <li>Wheelchair accessible entrance</li>
+        <li>Accessible parking lot</li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <h3>💳 Payments</h3>
+      <ul>
+        <li>Credit cards</li>
+        <li>Debit cards</li>
+        <li>NFC / contactless</li>
+        <li>Mobile payments</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    © 2025 <strong>Assal Pastry</strong> · 14130 Culver Dr, Irvine, CA ·
+    <a href="https://www.assalpastryus.com" target="_blank" rel="noopener">assalpastryus.com</a> ·
+    <a href="https://www.instagram.com/assal_pastry" target="_blank" rel="noopener">@assal_pastry</a> ·
+    <a href="https://www.google.com/maps/place/Assal+Pastry/@33.707854,-117.7821753,16z/data=!4m14!1m7!3m6!1s0x80dcdc8aadb1af21:0x2ea7622782e0d18c!2sAssal+Pastry!8m2!3d33.7077645!4d-117.7821849!16s%2Fg%2F1tjv3tn5!3m5!1s0x80dcdc8aadb1af21:0x2ea7622782e0d18c!8m2!3d33.7077645!4d-117.7821849!16s%2Fg%2F1tjv3tn5?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D"
+       target="_blank" rel="noopener">Google Maps</a>
+  </p>
+</footer>
+
+</body>
+</html>
